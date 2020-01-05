@@ -86,7 +86,7 @@ class Home {
      * @returns {Promise} Promise resolve argument is this object
      */
     fill() {
-        const web = "https://mangadex.org/"; 
+        const web = "https://mangadex.cc/"; 
 
         return new Promise((resolve, reject) => {
             Util.getMatches(web, {

@@ -92,13 +92,14 @@ class Chapter extends APIObject {
         this.pages = undefined;
         if (data.server && data.hash && data.page_array) {
             this.pages = [];
-            if (data.server == "/data/") data.server = "https://mangadex.org/data/"; // Home image server
-            for (let i of data.page_array) this.pages.push(data.server + data.hash + "/" + i);
+            // if (data.server == "/data/") data.server = "https://mangadex.cc/data/"; // Home image server
+            // Temperoary dirty fix for the new mangadex new domain
+            for (let i of data.page_array) this.pages.push('https://mangadex.cc/data/' + data.hash + "/" + i);
         }
     }
 
     fill(id) {
-        const api = "https://mangadex.org/api/chapter/"; 
+        const api = "https://mangadex.cc/api/chapter/"; 
         if (!id) id = this.id;
         else this.id = id;
 
@@ -118,7 +119,7 @@ class Chapter extends APIObject {
      * @returns {String} String with link
      */
     getFullURL(property) {
-        const homepage = "https://mangadex.org";
+        const homepage = "https://mangadex.cc";
         switch(property) {
             default:
                 return homepage;

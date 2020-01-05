@@ -126,8 +126,8 @@ class Manga extends APIObject {
     }
 
     fill(id) {
-        const jsonAPI = "https://mangadex.org/api/manga/"; 
-        const web = "https://mangadex.org/title/";
+        const jsonAPI = "https://mangadex.cc/api/manga/"; 
+        const web = "https://mangadex.cc/title/";
 
         if (!id) id = this.id;
         let last = false; // Flag to trigger resolve()
@@ -192,7 +192,7 @@ class Manga extends APIObject {
      * @returns {String} String with link
      */
     getFullURL(property) {
-        const homepage = "https://mangadex.org";
+        const homepage = "https://mangadex.cc";
         switch(property) {
             default:
                 return homepage;
@@ -220,7 +220,8 @@ class Manga extends APIObject {
      * @param {String} query Quicksearch query like a name or description
      */
     static search(query) {
-        const regex = /<a.+href=["']\/title\/(\d+)\/\S+["'].+class=["'].+manga_title.+["']>.+<\/a>/gmi;
+        // const regex = /<a.+href=["']\/title\/(\d+)\/\S+["'].+class=["'].+manga_title.+["']>.+<\/a>/gmi;
+        const regex = /href=["']\/title\/(\d+)\/\S+["']./gmi; // Temperoary dirty fix for the new mangadex new domain
         return Util.quickSearch(query, regex);
     }
     
@@ -244,7 +245,7 @@ class Manga extends APIObject {
      */
     static fullSearch(searchObj) {
         return new Promise((resolve, reject) => {
-            let url = "https://mangadex.org/search?";
+            let url = "https://mangadex.cc/search?";
 
             if ("title" in searchObj) url += "title=" + encodeURIComponent(searchObj.title) + "&";
             if ("author" in searchObj) url += "author=" + encodeURIComponent(searchObj.author) + "&"; 

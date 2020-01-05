@@ -39,7 +39,7 @@ class Agent {
      * Retrieves required information and fills this object.
      * @param {String} username 
      * @param {String} password 
-     * @param {Boolean} rememberMe Creates a persistent session viewable at https://mangadex.org/settings (default: false)
+     * @param {Boolean} rememberMe Creates a persistent session viewable at https://mangadex.cc/settings (default: false)
      * @returns {Promise}
      */
     login(username, password, rememberMe=false) {
@@ -57,11 +57,11 @@ class Agent {
 
             const boundary = Util.generateMultipartBoundary();
             let options = {
-                host: "mangadex.org",
+                host: "mangadex.cc",
                 path: "/ajax/actions.ajax.php?function=login",
                 method: "POST",
                 headers: {
-                    "referer": "https://mangadex.org/login",
+                    "referer": "https://mangadex.cc/login",
                     "User-Agent": "mangadex-full-api",
                     "X-Requested-With": "XMLHttpRequest",
                     "Content-Type": "multipart/form-data; boundary=" + boundary
@@ -105,7 +105,7 @@ class Agent {
      * @param {String} filepath 
      * @param {String} username 
      * @param {String} password 
-     * @param {Boolean} persistent Creates a persistent session viewable at https://mangadex.org/settings (default: false)
+     * @param {Boolean} persistent Creates a persistent session viewable at https://mangadex.cc/settings (default: false)
      * @returns {Promise}
      */
     cacheLogin(filepath, username, password, persistent=true) {
@@ -149,7 +149,7 @@ class Agent {
                 if (data.length > 2) this.persistentId = data[2];
                 
                 // Check if current tokens work and use Util.getHttps() automatic update of the current session token
-                Util.getMatches("https://mangadex.org/login", {
+                Util.getMatches("https://mangadex.cc/login", {
                     "logged": /You are logged in/gmi
                 }).then((m)=>{
                     if (m.logged) {
@@ -190,11 +190,11 @@ class Agent {
 
             const boundary = Util.generateMultipartBoundary();
             let options = {
-                host: "mangadex.org",
+                host: "mangadex.cc",
                 path: "/ajax/actions.ajax.php?function=msg_send",
                 method: "POST",
                 headers: {
-                    referer: "https://mangadex.org/messages/send",
+                    referer: "https://mangadex.cc/messages/send",
                     "User-Agent": "mangadex-full-api",
                     "X-Requested-With": "XMLHttpRequest",
                     "Content-Type": "multipart/form-data; boundary=" + boundary,
@@ -217,7 +217,7 @@ class Agent {
      */
     fillUser() {
         return new Promise((resolve, reject) => {
-            Util.getMatches("https://mangadex.org", {
+            Util.getMatches("https://mangadex.cc", {
                 "userid": /<a.+href=["']\/user\/(\d+)\/[^"']+["'].+class="[^"']+dropdown-toggle".+>/gmi             
             }).then((m) => {
                 if (!m.userid) reject("Cannot find User ID. Is the agent logged in?");
@@ -231,7 +231,7 @@ class Agent {
      */
     getHistory() {
         return new Promise((resolve, reject) => {
-            Util.getMatches("https://mangadex.org/history", {
+            Util.getMatches("https://mangadex.cc/history", {
                 "ids": /<a.+class=["'][^'"]*manga_title[^'"]*["'].+title=["'][^'"]+["'].+href=["']\/title\/(\d+)\/[^'"]+["'].+<\/a>/gmi,
                 "titles":  /<a.+class=["'][^'"]*manga_title[^'"]*["'].+title=["']([^'"]+)["'].+href=["']\/title\/\d+\/[^'"]+["'].+<\/a>/gmi
             }).then((m) => {

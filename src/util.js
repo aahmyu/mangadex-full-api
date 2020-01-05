@@ -99,7 +99,7 @@ module.exports = {
      * @returns {Promise} Returns promise with resolve(response, http.IncomingMessage)
      */
     quickSearch: function(query, regex) {
-        let url = "https://mangadex.org/quick_search/";
+        let url = "https://mangadex.cc/quick_search/";
         return new Promise((resolve, reject) => {
             if (!query || !regex) reject("Invalid Arguments.");
             module.exports.getMatches(url + encodeURIComponent(query), {

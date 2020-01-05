@@ -40,7 +40,7 @@ class Thread extends APIObject {
      * @param {Number} pages How many pages to read? Default: 1
      */
     fill(id, pages) {
-        const web = "https://mangadex.org/thread/"; 
+        const web = "https://mangadex.cc/thread/"; 
         if (!id) id = this.id;
         if (!pages) pages = 1;
 
@@ -85,7 +85,7 @@ class Thread extends APIObject {
      * @returns {String} String with link
      */
     getFullURL(property) {
-        const homepage = "https://mangadex.org";
+        const homepage = "https://mangadex.cc";
         switch(property) {
             default:
                 return homepage;
