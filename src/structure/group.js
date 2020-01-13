@@ -76,7 +76,7 @@ class Group extends APIObject {
     }
 
     fill(id) {
-        const web = "https://mangadex.cc/group/"; 
+        const web = "https://mangadex.org/group/"; 
         if (!id) id = this.id;
 
         return new Promise((resolve, reject) => {
@@ -121,7 +121,7 @@ class Group extends APIObject {
      * @returns {String} String with link
      */
     getFullURL(property) {
-        const homepage = "https://mangadex.cc";
+        const homepage = "https://mangadex.org";
         switch(property) {
             default:
                 return homepage;

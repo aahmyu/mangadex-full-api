@@ -126,8 +126,8 @@ class Manga extends APIObject {
     }
 
     fill(id) {
-        const jsonAPI = "https://mangadex.cc/api/manga/"; 
-        const web = "https://mangadex.cc/title/";
+        const jsonAPI = "https://mangadex.org/api/manga/"; 
+        const web = "https://mangadex.org/title/";
 
         if (!id) id = this.id;
         let last = false; // Flag to trigger resolve()
@@ -192,7 +192,7 @@ class Manga extends APIObject {
      * @returns {String} String with link
      */
     getFullURL(property) {
-        const homepage = "https://mangadex.cc";
+        const homepage = "https://mangadex.org";
         switch(property) {
             default:
                 return homepage;
@@ -245,7 +245,7 @@ class Manga extends APIObject {
      */
     static fullSearch(searchObj) {
         return new Promise((resolve, reject) => {
-            let url = "https://mangadex.cc/search?";
+            let url = "https://mangadex.org/search?";
 
             if ("title" in searchObj) url += "title=" + encodeURIComponent(searchObj.title) + "&";
             if ("author" in searchObj) url += "author=" + encodeURIComponent(searchObj.author) + "&"; 

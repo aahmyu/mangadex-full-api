@@ -48,7 +48,7 @@ class MDList extends APIObject {
      * @param {Number} pages How many pages to read? Default: 1
      */
     fill(id, pages) {
-        const web = "https://mangadex.cc/list/"; 
+        const web = "https://mangadex.org/list/"; 
         if (!id) id = this.id;
         if (!pages) pages = 1;
 
@@ -97,7 +97,7 @@ class MDList extends APIObject {
      * and sets the pages field.
      */
     static getNumberOfPages(id) {
-        const web = "https://mangadex.cc/list/"; 
+        const web = "https://mangadex.org/list/"; 
 
         return new Promise((resolve, reject) => {
             if (!id) reject("No id specified.");
@@ -119,7 +119,7 @@ class MDList extends APIObject {
      * @returns {String} String with link
      */
     getFullURL(property) {
-        const homepage = "https://mangadex.cc";
+        const homepage = "https://mangadex.org";
         switch(property) {
             default:
                 return homepage;

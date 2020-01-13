@@ -56,7 +56,7 @@ class User extends APIObject {
     }
 
     fill(id) {
-        const web = "https://mangadex.cc/user/"; 
+        const web = "https://mangadex.org/user/"; 
         if (!id) id = this.id;
 
         return new Promise((resolve, reject) => {
@@ -96,7 +96,7 @@ class User extends APIObject {
      * @returns {String} String with link
      */
     getFullURL(property) {
-        const homepage = "https://mangadex.cc";
+        const homepage = "https://mangadex.org";
         switch(property) {
             default:
                 return homepage;
